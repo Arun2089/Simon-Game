@@ -2,7 +2,7 @@ import React from 'react'
 
 const GameInfo = ({ reference, showInfo, setShowInfo }) => {
     const steps = [
-        "Press Start to start the game.-over",
+        "Press Start to start the game.-overtesting",
         "After a few seconds the game will start.",
         "When a color Box flicker remeber the box and click on it.",
         "If you click on the correct box then a new/same box flicker again.",
