@@ -1,0 +1,27 @@
+name: Trigger Curl on Push or PR Merge to Master
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  trigger-curl:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Trigger deployment on jenkins
+      run: |
+        if [ "${{ github.event.pull_request.merged }}" == "true" ] || [ "${{ github.event_name }}" == "push" ]; then
+          echo "Triggering deployment"
+          curl -u arun:1234 http://13.201.93.136:8080/job/testing/build?token=arunlohar12344321
+        fi
+
