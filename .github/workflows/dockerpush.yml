@@ -26,16 +26,16 @@ jobs:
      
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-image:${{ github.sha }} .
-          # Replace "my-image" with the desired image name, and `github.sha` gives a unique tag for each commit.
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-image:1 .
+         
 
      
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-image:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-image:1
 
     
       - name: Tag and Push 'latest' image
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/my-image:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/my-image:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-image:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/my-image:1 ${{ secrets.DOCKER_USERNAME }}/my-image:1
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-image:1
